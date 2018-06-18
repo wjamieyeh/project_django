@@ -1,1 +1,44 @@
-<h1>signup</h1>
+{% extends 'base.html' %}
+
+{%  block base %}
+<div class="mt-5 row">
+  <div class="mb-5 col-md-4">
+    {# You can add something in this space later if you'd like #}
+  </div>
+
+  <div class="mb-5 col-md-4">
+
+    {% if registered %}
+    <div class="jumbotron">
+        <h4 class="text-center text-danger">Thank you for Registering</h4>
+        <a class="mt-5 btn btn-primary form-control"href="{% url 'login' %}">
+        Click Here to Login
+        </a>
+    </div>
+    {% else %}
+
+    <h2 class="mt-5 text-center text-danger">Sign Up Below</h2>
+
+    <form action="{% url 'signup'%}" method="POST">
+      {% csrf_token %}
+      {% for field in signup_form %}
+      {% if field.name == 'password' %}
+      {{field.label}}:
+      <input type="password" class="form-control" name="{{field.name}}"/>
+      <span class="text-danger">{{field.errors}}</span>
+      {% else %}
+        {{field.label}}:
+        <input class="form-control" name="{{field.name}}"/>
+        <span class="text-danger">{{field.errors}}</span>
+      {% endif %}
+      {% endfor %}
+      <input class="mt-5 btn btn-primary form-control" type="submit" name="" value="Register">
+    </form>
+    {% endif %}
+  </div>
+
+  <div class="mb-5 col-md-4">
+    {# You can add something in this space later if you'd like #}
+  </div>
+</div>
+{% endblock %}

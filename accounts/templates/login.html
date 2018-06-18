@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block base %}
+
+<div class="mt-5 row">
+  <div class="col-md-4">
+    <!-- A nice even space you can use for something later -->
+  </div>
+  <div class="col-md-4">
+    {% if error%}
+    <h5 class="mt-5 text-center text-danger">{{error}}</h5>
+    <!-- This is how we can handle login errors -->
+    {%else%}
+    <h2 class="mt-5 text-center text-danger">Login Below</h2>
+    {%endif%}
+    <form class="mt-5" action="{% url 'login'%}" method="POST">
+      {% csrf_token %}
+      <div class="text-danger">
+        Username:
+        <input class="form-control" type="text" name="username" required />
+      </div>
+      <div class="text-danger">
+        Password:
+        <input class="form-control" type="password" name="password" required />
+      </div>
+      <div>
+        <input class="mt-5 form-control btn btn-primary" type="submit" value="Login" />
+      </div>
+    </form>
+  </div>
+  <div class="col-md-4">
+    <!-- A nice even space you can use for something later -->
+  </div>
+</div>
+
+
+{% endblock%}

@@ -32,12 +32,27 @@
                 <i class="text-purple fas fa-book"></i>
               </a>
             </li>
+
+            {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="text-purple text-purple nav-link" href="#">Login</a>
+              <a class="text-light text-light nav-link"
+              href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+            </li>
+
+            <form id="logout" action="{% url 'logout' %}" method="POST">
+              {% csrf_token %}
+              <input type="hidden"/>
+            </form>
+
+            {% else %}
+
+            <li class="nav-item">
+              <a class="text-purple text-purple nav-link" href="{% url 'login' %}">Login</a>
             </li>
             <li class="nav-item">
-              <a class="text-purple nav-link" href="#">Sign Up</a>
+              <a class="text-purple nav-link" href="{% url 'signup' %}">Sign Up</a>
             </li>
+            {% endif %}
             <li class="nav-item">
               <a class="text-purple nav-link" href="{% url 'admin:index'%}">Admin</a>
             </li>
