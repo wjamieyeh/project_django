@@ -1,0 +1,9 @@
+nav a:hover {
+  color: #ea732e !important;
+}
+
+canvas {
+  margin-top: 20px;
+  justify-content: center;
+  border: 1px solid black;
+}
