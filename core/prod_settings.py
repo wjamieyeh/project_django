@@ -26,7 +26,7 @@ DATABASE_URL = os.environ['DATABASE_URL']
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
-# KEY = config('KEY', default='')
+IGDB_KEY = config('IGDB_KEY', default='')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!

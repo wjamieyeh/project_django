@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Game
 from .forms import GameForm
+import requests
 
 def home(request):
     context = {
@@ -29,3 +30,15 @@ def create(request):
     'title':'Add a game to be voted on',
     'game_form': game_form,
     })
+
+@login_required
+def upvote(request, game_id):
+    if request.method == 'POST':
+        game = get_object_or_404(Game, pk=game_id)
+        game.votes += 1
+        game.save()
+    return redirect('home')
+
+# def igdb(request):
+#     key = settings.IGDB_KEY
+#     info = requests.get('https://api-endpoint.igdb.com/games/')

@@ -6,8 +6,8 @@ $(function () {
   //     var ctx = canvas.getContext('2d');
   //   }
   // }
-  var canvas = $('#myCanvas')[0];
-  var context = $('#myCanvas')[0].getContext("2d");
+  // var canvas = $('#myCanvas')[0];
+  // var context = $('#myCanvas')[0].getContext("2d");
 
   $('#blink').click(function() {
     blink();
@@ -16,6 +16,10 @@ $(function () {
   $('#clear').click(function() {
     canvas.width = canvas.width;
   });
+
+  // $('#load').click(function() {
+  //
+  // })
 
   var images = {};
   loadImage("body");

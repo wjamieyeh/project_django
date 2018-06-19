@@ -2,12 +2,6 @@
 
 {% block base %}
 
-      <div class="container md-5">
-        <canvas id="myCanvas" width="600" height="500"></canvas>
-        <button id="clear" type="button" class="btn btn-info">Clear</button>
-        <button id="load" type="button" class="btn btn-info">Clear</button>
-        <button id="blink" type="button" class="btn btn-info">Blink</button>
-      </div>
 
 
 <div class="mt-5 row">
@@ -40,10 +34,12 @@
         <p class="text-danger card-text">{{game.description}}</p>
         <a href="{{game.amazon_url}}" class="amazon btn btn-warning">See on Amazon.com</a>
 
-        <a href="#" class="btn btn-md btn-success">
-        <i class="fas fa-caret-up"></i> 1 Upvotes</a>
-        {# We'll need to set up our upvotes requirement soon =) #}
-
+        <a href="javascript:{document.getElementById('vote-{{game.id}}').submit()}" class="btn btn-md btn-success">
+        <i class="fas fa-caret-up"></i> {{game.votes}} Upvotes</a>
+        <form id="vote-{{game.id}}"action="{% url 'upvote' game.id %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" />
+        </form>
       </div>
     </div>
     {% endfor %}
