@@ -1,8 +1,12 @@
-
-.navbar-header {
-  padding-left: 150px !important;
+#guys {
+  height: 100px;
 }
 
+.game-display {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
 
 .welcome {
   font-family: 'Encode Sans Condensed', sans-serif;

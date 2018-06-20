@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
 {% block base %}
+<div class="row">
+<img id="guys" src="/media/guys.gif" alt="nothing now">
+</div>
 
-
-<div class="mt-5 row">
+<div class="row game-display">
 
   <div class="col-md-4">
-  <div class="mt-5 card" style="width: 20rem;">
+  <div class="card" style="width: 20rem;">
     <div class="card-header">
       <h6 class="welcome">Welcome to Hot Games!</h6>
     </div>
@@ -24,7 +26,7 @@
   <div class="col-md-8">
     {%if games%}
     {% for game in games%}
-    <div class="mt-5 card">
+    <div class=" card">
 
       <div class="text-info card-header">
         Added by {{game.game_rater}} on: {{game.prettify_datetime}}
