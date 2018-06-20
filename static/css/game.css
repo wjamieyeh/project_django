@@ -1,6 +1,8 @@
-nav a:hover {
-  color: #b6bdc6 !important;
+
+.navbar-header {
+  padding-left: 150px !important;
 }
+
 
 .welcome {
   font-family: 'Encode Sans Condensed', sans-serif;

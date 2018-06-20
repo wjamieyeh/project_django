@@ -4,27 +4,23 @@
 
 
 <div class="mt-5 row">
+
   <div class="col-md-4">
   <div class="mt-5 card" style="width: 20rem;">
-  <div class="card-header">
-    <h6 class="welcome">Welcome to Game Rater!</h6>
-      </div>
-        <ul class="list-group list-group-flush">
+    <div class="card-header">
+      <h6 class="welcome">Welcome to Hot Games!</h6>
+    </div>
 
+        <ul class="list-group list-group-flush">
           {% if user.is_authenticated %}
-          <li class="list-group-item">
-            <h6 class="text-info">Hello {{user.first_name}} !</h6>
-          </li>
-          <li class="list-group-item">
-            <a href="{% url 'profile' user.id %}">
-              <h6 class="text-info">Profile</h6>
-            </a>
+          <li class="list-group-item"><h6 class="text-info">Hello {{user.first_name}} !</h6></li>
+          <li class="list-group-item"><a href="{% url 'profile' user.id %}"><h6 class="text-info">Profile</h6></a>
           </li>
           {% endif %}
-
         </ul>
     </div>
   </div>
+
   <div class="col-md-8">
     {%if games%}
     {% for game in games%}
@@ -54,12 +50,5 @@
     {%endif%}
   </div>
 </div>
-
-<div class="api">
-  <p>testing</p>
-  <img src="{{image_url}}" alt="nothing now">
-</div>
-
-
 
 {% endblock%}
