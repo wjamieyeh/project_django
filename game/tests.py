@@ -1,3 +1,6 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 
-# Create your tests here.
+class MyTest(TestCase):
+    def setUp(self):
+        print('running a test')
+        self.client = Client()

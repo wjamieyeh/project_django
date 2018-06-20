@@ -4,6 +4,7 @@ from django.utils import timezone
 
 
 class Game(models.Model):
+    image = models.ImageField(upload_to='game_images/')
     title = models.CharField(max_length=100)
     studio = models.CharField(max_length=100)
     description = models.TextField()

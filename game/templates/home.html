@@ -3,29 +3,25 @@
 {% block base %}
 
 
-
 <div class="mt-5 row">
   <div class="col-md-4">
   <div class="mt-5 card" style="width: 20rem;">
   <div class="card-header">
-    <h5 class="welcome">Welcome to Game Rater!</h5>
+    <h6 class="welcome">Welcome to Game Rater!</h6>
       </div>
         <ul class="list-group list-group-flush">
 
           {% if user.is_authenticated %}
           <li class="list-group-item">
-            <h5 class="text-info">Hello {{user}}</h5>
+            <h6 class="text-info">Hello {{user.first_name}} !</h6>
           </li>
           <li class="list-group-item">
             <a href="{% url 'profile' user.id %}">
-              <h6 class="text-info">Go to your profile</h6>
+              <h6 class="text-info">Profile</h6>
             </a>
           </li>
           {% endif %}
 
-          <li class="text-info list-group-item">Games are ordered by votes</li>
-          <li class="text-info list-group-item">Link to Amazon.com included</li>
-          <li class="text-info list-group-item">Which game will become popular?</li>
         </ul>
     </div>
   </div>
@@ -33,16 +29,19 @@
     {%if games%}
     {% for game in games%}
     <div class="mt-5 card">
+
       <div class="text-info card-header">
         Added by {{game.game_rater}} on: {{game.prettify_datetime}}
       </div>
+        <img id="game_image" src="/media/{{game.image}}" height="300" alt="nothing now">
+
       <div class="card-body">
-        <h5 class="text-info card-title">{{game.title}}</h5>
+        <h5 class="text-success card-title">{{game.title}}</h5>
         <p class="text-info card-text">{{game.description}}</p>
         <a href="{{game.amazon_url}}" class="amazon btn btn-warning">See on Amazon.com</a>
 
         <a href="javascript:{document.getElementById('vote-{{game.id}}').submit()}" class="btn btn-md btn-success">
-        <i class="fas fa-caret-up"></i> {{game.votes}} Upvotes</a>
+        <i class="fas fa-caret-up"></i> {{game.votes}} Likes</a>
         <form id="vote-{{game.id}}"action="{% url 'upvote' game.id %}" method="POST">
           {% csrf_token %}
           <input type="hidden" />

@@ -6,8 +6,8 @@ $(function () {
   //     var ctx = canvas.getContext('2d');
   //   }
   // }
-  // var canvas = $('#myCanvas')[0];
-  // var context = $('#myCanvas')[0].getContext("2d");
+  var canvas = $('#myCanvas')[0];
+  var context = $('#myCanvas')[0].getContext("2d");
 
   $('#blink').click(function() {
     blink();
@@ -17,9 +17,9 @@ $(function () {
     canvas.width = canvas.width;
   });
 
-  // $('#load').click(function() {
-  //
-  // })
+  $('#load').click(function() {
+
+  })
 
   var images = {};
   loadImage("body");
@@ -55,7 +55,7 @@ $(function () {
     var x = charX;
     var y = charY;
 
-    canvas.width = canvas.width; // clears the canvas
+    // canvas.width = canvas.width; // clears the canvas
 
     drawEllipse(x , y + 285, 300 - breathAmt, 10);
     context.drawImage(images["body"], x - 130, y + 50 - breathAmt);
