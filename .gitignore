@@ -7,7 +7,6 @@
 *.pyc
 *.env
 __pycache__/
-settings.py
 db.sqlite3
 media
 
