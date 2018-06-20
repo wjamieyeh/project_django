@@ -4,15 +4,15 @@
     <div class="mt-5 card" style="width: 20rem;">
       <div class="card-header">
         {% if user.first_name%}
-        <h5 class="text-danger card-title">Welcome, {{user.first_name}}</h5>
+        <h5 class="text-info card-title">Welcome, {{user.first_name}}</h5>
         {%else%}
-        <h5 class="text-danger card-title">Welcome, {{user}}</h5>
+        <h5 class="text-info card-title">Welcome, {{user}}</h5>
         {%endif%}
       </div>
       <ul class="list-group list-group-flush">
-        <li class="text-danger list-group-item">{{user.email}}</li>
+        <li class="text-info list-group-item">{{user.email}}</li>
         <a href="{% url 'home' %}">
-          <li class="text-danger list-group-item">
+          <li class="text-info list-group-item">
             <i class="fas fa-home"></i>
             Back to Homepage
           </li>
@@ -23,12 +23,12 @@
   <div class="col-md-8">
     {%if user_games%} {% for game in user_games%}
     <div class="mt-5 card">
-      <div class="text-danger card-header">
+      <div class="text-info card-header">
         You added this game on: <small>{{game.prettify_datetime}}</small>, and it currently has: <em>{{game.votes}} vote(s)</em>
       </div>
       <div class="card-body">
-        <h5 class="text-danger card-title">{{game.title}}</h5>
-        <p class="text-danger card-text">{{game.description}}</p>
+        <h5 class="text-info card-title">{{game.title}}</h5>
+        <p class="text-info card-text">{{game.description}}</p>
         <a href="{{game.amazon_url}}" class="btn btn-sm btn-warning">
           <i class="fab fa-amazon"></i>
           See on Amazon.com
@@ -52,7 +52,7 @@
       </form>
     </div>
     {% endfor %} {%else%}
-    <h2 class="mt-5 text-danger text-center">You haven't added any games yet</h2> {%endif%}
+    <h2 class="mt-5 text-info text-center">You haven't added any games yet</h2> {%endif%}
   </div>
 </div>
 {% endblock %}

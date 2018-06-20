@@ -13,9 +13,9 @@ You will be meeting with your Squad leader on Monday to get your project idea ap
 A new Github Repo that includes the following sections
 
 * Introduction
-  - A game blog that introduces console games with CRUD for user's to keep a list of games to play
+  - A game blog that introduces console games with CRUD for user's to keep a list of games to display and vote
 * Technologies
-  - javascript(jquery) django, postgres, ajax
+  - javascript(jquery) django, postgres, external API
 * MVP
   - user auth login/logout
   - user can CRUD their list of games
@@ -26,8 +26,9 @@ A new Github Repo that includes the following sections
   - get external content such as game play instead of cinematic trailers.
 * Timeline
   - Monday night - create user auth, have CRUD on creating a game post
-  - Tuesday night - 
-  - Wednesday night - styling
+  - Tuesday night - complete test cases and deploy to Heroku
+  - Wednesday night - styling and external API
+  - Thursday night - 
 * Wireframes
   - You can use whatever you want to make these (it can just be a drawing)
   - This must be checked into your repo and displayed in this section
