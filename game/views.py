@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Game
 from .forms import GameForm
-import requests
+import json, requests, time, os
+from igdb_api_python.igdb import igdb as igdb
 
 def home(request):
     context = {
@@ -39,6 +40,60 @@ def upvote(request, game_id):
         game.save()
     return redirect('home')
 
-# def igdb(request):
-#     key = settings.IGDB_KEY
-#     info = requests.get('https://api-endpoint.igdb.com/games/')
+@login_required
+def delete(request, game_id):
+    if request.method == 'POST':
+        game = get_object_or_404(Game, pk=game_id) #find the game in the db by id
+        game.delete() #Deleting from the db is a cake walk!
+        return redirect('profile', user_id=request.user.id)
+
+@login_required
+def update(request, game_id):
+    game = get_object_or_404(Game, pk=game_id)
+    if request.method == 'POST':
+        update_game_form = GameForm(request.POST, instance=game)
+        if update_game_form.is_valid():
+            update_game_form.save()
+            return redirect('profile', user_id=request.user.id)
+    else:
+        update_game_form = GameForm(instance=game)
+    return render(request, 'update.html', {
+    'title': 'Update {}'.format(game.title),
+    'update_game_form':update_game_form,
+    'game':game,
+    })
+
+def igdb_get(request):
+    url = "https://api-endpoint.igdb.com/games/1942/"
+    querystring = {
+    'fields': '*'
+    }
+    payload = "{\n        \"first_name\": \"Test\",\n        \"last_name\": \"Test\",\n        \"active\": false,\n        \"classof\": 2018\n}"
+    headers = {
+        'Accept': "application/json",
+        'user-key': "0facb220a514493eb8c4c5129e3ef773",
+    }
+    response = requests.request("GET", url, data=payload, headers=headers, params=querystring)
+    game = {}
+    if response:
+        game = response.json()
+        game_story = game[0]['storyline']
+        game_cover = game[0]['cover']['url']
+        # image_url = game[0]['cover']['url']
+    print(game_cover)
+
+    return render(request, 'home2.html', {'game_story': game_story, 'game_cover': game_cover})
+
+
+
+# def igdb_get_new_ps4(request):
+#     key = igdb("0facb220a514493eb8c4c5129e3ef773")
+#     result = igdb.release_dates({
+#         'filters' :{
+#             "[platform][eq]":48,
+#             "[rating][gt]"    : 8
+#         },
+#         'order':"date:asc",
+#         'fields':"game"
+#     })
+#     return render(request, 'new.html', result)

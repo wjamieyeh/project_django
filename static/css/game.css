@@ -1,9 +1,14 @@
 nav a:hover {
-  color: #ea732e !important;
+  color: #b6bdc6 !important;
 }
 
-canvas {
+.welcome {
+  font-family: 'Encode Sans Condensed', sans-serif;
+  color: black;
+}
+
+/* canvas {
   margin-top: 20px;
   justify-content: center;
   border: 1px solid black;
-}
+} */

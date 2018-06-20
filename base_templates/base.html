@@ -16,11 +16,12 @@
     integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
     crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/game.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Condensed" rel="stylesheet">
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Game</a>
+      <nav class="navbar navbar-expand-lg bg-dark">
+        <a class="navbar-brand text-white" href="/"><i class="fas fa-home"></i>Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,8 +29,8 @@
           <ul style="margin-right:20px;"class="navbar-nav ml-auto">
             <li class="nav-item">
               <a class="nav-link"href="{% url 'create' %}">
-                <i class="text-purple fas fa-plus"></i>
-                <i class="text-purple fas fa-book"></i>
+                <i class="text-white fas fa-plus"></i>
+                <i class="text-white fas fa-book"></i>
               </a>
             </li>
 
@@ -47,14 +48,14 @@
             {% else %}
 
             <li class="nav-item">
-              <a class="text-purple text-purple nav-link" href="{% url 'login' %}">Login</a>
+              <a class="text-white nav-link" href="{% url 'login' %}">Login</a>
             </li>
             <li class="nav-item">
-              <a class="text-purple nav-link" href="{% url 'signup' %}">Sign Up</a>
+              <a class="text-white nav-link" href="{% url 'signup' %}">Sign Up</a>
             </li>
             {% endif %}
             <li class="nav-item">
-              <a class="text-purple nav-link" href="{% url 'admin:index'%}">Admin</a>
+              <a class="text-white nav-link" href="{% url 'admin:index'%}">Admin</a>
             </li>
           </ul>
         </div>

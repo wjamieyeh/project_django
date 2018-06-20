@@ -1,0 +1,58 @@
+{% extends 'base.html'%} {% block base %}
+<div class="row">
+  <div class="col-md-4">
+    <div class="mt-5 card" style="width: 20rem;">
+      <div class="card-header">
+        {% if user.first_name%}
+        <h5 class="text-danger card-title">Welcome, {{user.first_name}}</h5>
+        {%else%}
+        <h5 class="text-danger card-title">Welcome, {{user}}</h5>
+        {%endif%}
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="text-danger list-group-item">{{user.email}}</li>
+        <a href="{% url 'home' %}">
+          <li class="text-danger list-group-item">
+            <i class="fas fa-home"></i>
+            Back to Homepage
+          </li>
+        </a>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-8">
+    {%if user_games%} {% for game in user_games%}
+    <div class="mt-5 card">
+      <div class="text-danger card-header">
+        You added this game on: <small>{{game.prettify_datetime}}</small>, and it currently has: <em>{{game.votes}} vote(s)</em>
+      </div>
+      <div class="card-body">
+        <h5 class="text-danger card-title">{{game.title}}</h5>
+        <p class="text-danger card-text">{{game.description}}</p>
+        <a href="{{game.amazon_url}}" class="btn btn-sm btn-warning">
+          <i class="fab fa-amazon"></i>
+          See on Amazon.com
+        </a>
+
+        <a href="javascript:{document.getElementById('delete-{{game.id}}').submit()}" class="btn btn-sm btn-danger">
+          <i class="fas fa-trash-alt"></i>
+          Remove Game
+        </a>
+
+
+        <a href="{% url 'update' game.id %}" class="btn btn-sm btn-info">
+          <i class="fas fa-edit"></i>
+          Update Game Details
+        </a>
+
+      </div>
+      <form id="delete-{{game.id}}" action="{% url 'delete' game.id %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" />
+      </form>
+    </div>
+    {% endfor %} {%else%}
+    <h2 class="mt-5 text-danger text-center">You haven't added any games yet</h2> {%endif%}
+  </div>
+</div>
+{% endblock %}

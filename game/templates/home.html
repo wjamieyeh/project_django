@@ -8,17 +8,24 @@
   <div class="col-md-4">
   <div class="mt-5 card" style="width: 20rem;">
   <div class="card-header">
-    <h5 class="text-danger card-title">Welcome to Game Rater!</h5>
+    <h5 class="welcome">Welcome to Game Rater!</h5>
       </div>
         <ul class="list-group list-group-flush">
+
           {% if user.is_authenticated %}
           <li class="list-group-item">
-            <h5 class="text-danger">Hello {{user}}</h5>
+            <h5 class="text-info">Hello {{user}}</h5>
+          </li>
+          <li class="list-group-item">
+            <a href="{% url 'profile' user.id %}">
+              <h6 class="text-info">Go to your profile</h6>
+            </a>
           </li>
           {% endif %}
-          <li class="text-danger list-group-item">Games are ordered by votes</li>
-          <li class="text-danger list-group-item">Link to Amazon.com included</li>
-          <li class="text-danger list-group-item">Which game will become popular?</li>
+
+          <li class="text-info list-group-item">Games are ordered by votes</li>
+          <li class="text-info list-group-item">Link to Amazon.com included</li>
+          <li class="text-info list-group-item">Which game will become popular?</li>
         </ul>
     </div>
   </div>
@@ -26,12 +33,12 @@
     {%if games%}
     {% for game in games%}
     <div class="mt-5 card">
-      <div class="text-danger card-header">
+      <div class="text-info card-header">
         Added by {{game.game_rater}} on: {{game.prettify_datetime}}
       </div>
       <div class="card-body">
-        <h5 class="text-danger card-title">{{game.title}}</h5>
-        <p class="text-danger card-text">{{game.description}}</p>
+        <h5 class="text-info card-title">{{game.title}}</h5>
+        <p class="text-info card-text">{{game.description}}</p>
         <a href="{{game.amazon_url}}" class="amazon btn btn-warning">See on Amazon.com</a>
 
         <a href="javascript:{document.getElementById('vote-{{game.id}}').submit()}" class="btn btn-md btn-success">
@@ -44,9 +51,14 @@
     </div>
     {% endfor %}
     {%else%}
-    <h2 class="mt-5 text-danger text-center">Sorry, there are no games to display</h2>
+    <h2 class="mt-5 text-info text-center">Sorry, there are no games to display</h2>
     {%endif%}
   </div>
+</div>
+
+<div class="api">
+  <p>testing</p>
+  <img src="{{image_url}}" alt="nothing now">
 </div>
 
 

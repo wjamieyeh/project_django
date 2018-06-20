@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block base %}
+
+<div class="mt-5 row">
+  <div class="col-md-4">
+    <!-- You can add something here later if you like -->
+  </div>
+  <div class="col-md-4">
+    <h2 class="text-center text-danger">Update Your Game Below</h2>
+    <form action="{% url 'update' game.id %}" method="POST">
+
+      {% csrf_token %}
+
+      {% for field in update_game_form %}
+      {% if field.name == 'description' %} {{ field.label }}:
+      <textarea class="form-control" name="{{field.name}}" rows="7" cols="40">{{field.value}}
+      </textarea>
+      <span class="error text-danger">{{field.errors}}</span>
+      {% else %} {{ field.label }}:
+      <input class="form-control" type="text" name="{{field.name}}" value="{{field.value}}"/>
+      <span class="error text-danger">{{field.errors}}</span>
+      {% endif %}
+      {% endfor %}
+      <div>
+        <input class="form-control mt-5 btn btn-primary" type="submit" value="Update Game" />
+      </div>
+    </form>
+  </div>
+  <div class="col-md-4">
+    <!-- You can add something here later if you like -->
+  </div>
+</div>
+
+{% endblock%}

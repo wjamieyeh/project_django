@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from . forms import SignUpForm
 from django.contrib import auth
+from game.models import Game
 
 def signup(request):
     registered = False
@@ -43,3 +44,13 @@ def logout(request):
     if request.method == 'POST':
         auth.logout(request)
         return redirect('home')
+
+def profile(request, user_id):
+    user = get_object_or_404(User, pk=user_id)
+    user_games = Game.objects.filter(game_rater_id=user_id)
+    context = {
+    'title': 'Hello {}'.format(user.first_name),
+    'user': user,
+    'user_games': user_games,
+    }
+    return render(request, 'profile.html', context)
