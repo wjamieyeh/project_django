@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
 {% block base %}
+{% load staticfiles %}
 
+<div class="row">
+<img id="guys" src="{% static 'images/guys.gif' %}" alt="nothing now">
+</div>
 
-
-<h2>home2</h2>
 <div class="img">
   <img src="{{game_cover}}" alt="nothing now">
 </div>

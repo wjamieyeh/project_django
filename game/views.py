@@ -19,9 +19,7 @@ def create(request):
         game_form = GameForm(data=request.POST)
         if game_form.is_valid():
             game = game_form.save(commit=False)
-            # We'll set commit=False so we can populate our model with non model form data
             game.game_rater = request.user
-            # Now we can insert the logged in user, they were attached to the request body
             game.save()
             return redirect('home')
     else:
