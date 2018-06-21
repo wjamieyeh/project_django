@@ -1,5 +1,7 @@
 #guys {
+  position:relative;
   height: 100px;
+  display:block;
 }
 
 .game-display {
