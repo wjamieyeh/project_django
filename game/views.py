@@ -77,12 +77,36 @@ def igdb_get(request):
         game = response.json()
         game_story = game[0]['storyline']
         game_cover = game[0]['cover']['url']
-        # image_url = game[0]['cover']['url']
-    print(game_cover)
+        test = game[0]['platforms']
 
+    # print(test)
     return render(request, 'home2.html', {'game_story': game_story, 'game_cover': game_cover})
 
 
+
+def igdb_get_ps4(request):
+    url = "https://api-endpoint.igdb.com/games/"
+
+    querystring = {
+        "fields":"*",
+        "order":"rating:desc",
+        "filter[platforms][eq]":"48",
+        "filter[popularity][gt]":"90"
+    }
+
+    payload = "{\n        \"first_name\": \"Test\",\n        \"last_name\": \"Test\",\n        \"active\": false,\n        \"classof\": 2018\n}"
+    headers = {
+        'Accept': "application/json",
+        'user-key': "0facb220a514493eb8c4c5129e3ef773",
+        }
+
+    response = requests.request("GET", url, data=payload, headers=headers, params=querystring)
+
+    if response:
+        ps_games = response.json()
+        # ps_games = games[0]
+    print(ps_games)
+    return render(request, 'home2.html', {'ps_games': ps_games})
 
 # def igdb_get_new_ps4(request):
 #     key = igdb("0facb220a514493eb8c4c5129e3ef773")

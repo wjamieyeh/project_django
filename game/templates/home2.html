@@ -15,6 +15,15 @@
 
 </div>
 
+{% if ps_games%}
+<h2>yes there are ps4</h2>
+{% for game in ps_games %}
+<div class="card">
+  <div class="card-body">{{game.name}}</div>
+</div>
+{%endfor%}
+{%endif%}
+
 
 
 
