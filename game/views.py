@@ -68,7 +68,7 @@ def igdb_get_ps4(request):
         "fields":"*",
         "order":"rating:desc",
         "filter[platforms][eq]":"48",
-        "filter[popularity][gt]":"90"
+        "filter[popularity][gt]":"95",
     }
     payload = "{\n        \"first_name\": \"Test\",\n        \"last_name\": \"Test\",\n        \"active\": false,\n        \"classof\": 2018\n}"
     headers = {
