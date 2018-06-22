@@ -28,7 +28,7 @@ A new Github Repo that includes the following sections
   - Monday night - create user auth, have CRUD on creating a game post
   - Tuesday night - complete test cases and deploy to Heroku
   - Wednesday night - styling and external API
-  - Thursday night - 
+  - Thursday night - double check everything!
 * Wireframes
   - You can use whatever you want to make these (it can just be a drawing)
   - This must be checked into your repo and displayed in this section
