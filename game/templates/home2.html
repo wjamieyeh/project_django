@@ -8,24 +8,21 @@
 </div>
 
 {% if ps_games%}
-<h2>Top PS4 Games by average Rating</h2>
+<h2 class="mb-5">Top PS4 Games by average Rating</h2>
 {% for game in ps_games %}
 <div class="card card-top">
-  <div class="card-header">
-    {{game.name}}
+  <a class="card-header" href="{{game.websites.1.url}}">{{game.name}}</a>
+  <div class="card-body">
+    {{game.summary}}
   </div>
-  <div class="card-body">{{game.summary}}</div>
-
 </div>
-<div>
-<img class="screenshot" src="//images.igdb.com/igdb/image/upload/t_screenshot_big/{{game.screenshots.0.cloudinary_id}}.jpg" alt="screenshot">
-<img class="screenshot" src="//images.igdb.com/igdb/image/upload/t_screenshot_big/{{game.screenshots.1.cloudinary_id}}.jpg" alt="screenshot">
-<img class="screenshot" src="//images.igdb.com/igdb/image/upload/t_screenshot_big/{{game.screenshots.2.cloudinary_id}}.jpg" alt="screenshot">
+<div class="mb-5">
+  <img class="screenshot" src="//images.igdb.com/igdb/image/upload/t_screenshot_big/{{game.screenshots.0.cloudinary_id}}.jpg" alt="screenshot">
+  <img class="screenshot" src="//images.igdb.com/igdb/image/upload/t_screenshot_big/{{game.screenshots.1.cloudinary_id}}.jpg" alt="screenshot">
+  <img class="screenshot" src="//images.igdb.com/igdb/image/upload/t_screenshot_big/{{game.screenshots.2.cloudinary_id}}.jpg" alt="screenshot">
 </div>
 {%endfor%}
 {%endif%}
-
-
 
 
 
