@@ -7,19 +7,20 @@
 <img id="guys" src="{% static 'images/guys.gif' %}" alt="nothing now">
 </div>
 
-<div class="img">
-  <img src="{{game_cover}}" alt="nothing now">
-</div>
-<div class="api">
-  <p>{{game_story}}</p>
-
-</div>
-
 {% if ps_games%}
-<h2>yes there are ps4</h2>
+<h2>Top PS4 Games by average Rating</h2>
 {% for game in ps_games %}
-<div class="card">
-  <div class="card-body">{{game.name}}</div>
+<div class="card card-top">
+  <div class="card-header">
+    {{game.name}}
+  </div>
+  <div class="card-body">{{game.summary}}</div>
+
+</div>
+<div>
+<img class="screenshot" src="//images.igdb.com/igdb/image/upload/t_screenshot_big/{{game.screenshots.0.cloudinary_id}}.jpg" alt="screenshot">
+<img class="screenshot" src="//images.igdb.com/igdb/image/upload/t_screenshot_big/{{game.screenshots.1.cloudinary_id}}.jpg" alt="screenshot">
+<img class="screenshot" src="//images.igdb.com/igdb/image/upload/t_screenshot_big/{{game.screenshots.2.cloudinary_id}}.jpg" alt="screenshot">
 </div>
 {%endfor%}
 {%endif%}
